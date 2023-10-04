@@ -1,0 +1,113 @@
+
+
+
+<div class="grid-view" *ngIf="view === 'grid'">
+    <div class="card text-center">
+        <div class="card-header fw-bold fs-5 text-success">
+            header
+        </div>
+        <div class="overflow-hidden d-flex justify-content-center align-items-center">
+            <img src="../../../assets/Images/mobiles/10/1.jpg" alt="" class="card-img-top" style="width:22rem;">
+        </div>
+    
+    
+        <div class="card-body">
+        <h5 class="card-title title">Title</h5>
+        <h6 class="card-subtitle my-2 text-primary">12-product are avaliable </h6>
+        <p class="card-text description"> Description</p>
+    </div>
+    
+    <div class="card-body">
+        <h5 class="card-title text-success"> Final Price
+        <span class="text-primary">-20%</span></h5>
+        <h6 class="card-subtitle text-danger text-decoration-line-through">
+            Original Price
+        </h6>
+    </div>
+    
+    <div class="card-footer d-grid gap-2">
+        <button class="btn btn-outline-success" type="button"> Add to cart</button>
+    </div>
+    </div>
+</div>
+
+<div class="list-view" *ngIf="view ==='list'">
+<div class="card">
+    <div class="row g-0">
+<div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
+
+    <img src="../../../assets/Images/mobiles/10/1.jpg" alt="Product  Image" class="img-fluid rounded-start" 
+    style="width:22rem;">
+</div>
+        <div class="col d-flex flex-column">
+            <div class="card-header text-center">
+                header
+            </div>
+            <div class="card-body">
+                <h5 class="card-title title"> Title</h5>
+                <p class="card-text description"> Descripition</p>
+                <h6 class="card-subtitle mb-3 text-primary">11 Product are avaliabe</h6>
+            </div>
+
+            <div class="card-body">
+                <h4 class="card-title text-muted"></h4>
+                <h2 class="card-title text-success">
+                    final Price
+                    <span class="text-primary">
+                        -20%
+                    </span>
+                </h2>
+                <h5 class="card-subtitle text-danger text-decoration-line-through"> Original Price</h5>
+            </div>
+            <div class="card-footer text-muted d-grid gap-2">
+                <button class="btn btn-outline-success" type="button"> Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+<div class="cart-item-view" *ngIf="view ==='currentcartitem'">
+<div class="card">
+    <div class="row g-0">
+
+        <div class="col-4 overflow-hidden d-flex justifu-content-center align-items-center">
+            <img src="../../../assets/Images/mobiles/10/1.jpg" class="img-fluid rounded-start" alt="product Image">
+            
+
+        </div>
+        <div class="col-8">
+        <div class="card-body">
+
+            <h5 class="card-title title">Title</h5>
+            <h5 class="card-title text-success">Final Price
+                <span class="text-primary">11 Products are avaliable</span>
+            </h5>
+            <h6 class="card-subtitle text-danger text-decoration-line-through">
+                Original Price
+            </h6>
+        </div>
+        <div class="card-footer text-muted d-grid gap-2">
+            <button class="btn btn-outline-danger" type="button"> Remove From Cart</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="cart-item-view" *ngIf="view ==='prevcartitem'">
+    <div class="card text-center">
+<div class="overflow-hidden d-flex justifu-content-center align-items-center">
+
+    <img src="../../../assets/Images/mobiles/10/1.jpg" alt="" class="card-img-top">
+
+</div>
+
+<div class="cart-body">
+    <h5 class="card-title title"> Title</h5>
+</div>
+
+    </div>
+</div>
