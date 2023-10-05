@@ -26,8 +26,8 @@
             </div>
         </div>
         <div class="btn-group btn-group-lg me-2" role="group">
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="model" data-bs-target="#generalmodel">Login</button>
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="model" data-bs-target="#generalmodel">Register</button>
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#generalmodal" (click)="openModal('login')">Login</button>
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#generalmodal" (click)="openModal('register')">Register</button>
             <button type="button" class="btn btn-outline-light">Account</button>
             <button type="button" class="btn btn-outline-light" routerLink="/cart">Cart</button>
             <button type="button" class="btn btn-outline-light" routerLink="/orders">Orders</button>
@@ -36,16 +36,16 @@
     </div>
 </header>
 
-<!-- Model -->
-<div class="model fade" id="generatemodel" data-bs-backup="static" data-bs-keywords="false" tabindex="-1">
-    <div class="model-dialog">
-        <div class="model-content">
-            <div class="model-header">
-                <h5 class="model-title" #modelTitle></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="nodal" aria-label="close"></button>
-                <div class="modal-body">
-<app-register></app-register>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="generalmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" #modalTitle></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <ng-container #container></ng-container>
             </div>
         </div>
     </div>
