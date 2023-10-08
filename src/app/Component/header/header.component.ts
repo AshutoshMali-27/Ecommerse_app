@@ -1,37 +1,60 @@
+import { NavigationService } from './../../services/navigation.service';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { NavigationItem } from './../../Models/models';
-import { Component, ElementRef, OnInit,Type,ViewChild,ViewContainerRef } from '@angular/core';
+import { Category, NavigationItem } from './../../Models/models';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Type,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('modalTitle') modelTitle !: ElementRef;
-  @ViewChild('container' ,{read: ViewContainerRef ,static:true})
-  container !:ViewContainerRef
-navigationList : NavigationItem[]=[
+  @ViewChild('modalTitle') modelTitle!: ElementRef;
+  @ViewChild('container', { read: ViewContainerRef, static: true })
+  container!: ViewContainerRef;
 
 
-  {
-    category :'electronics',
-    subcategories : ['mobiles','laptops']
-  },
-  {
-    category :'furniture',
-    subcategories : ['chairs','tables']
+  navigationList: NavigationItem[] = [];
+
+
+  constructor(private NavigationService: NavigationService) {}
+
+  ngOnInit(): void {
+    this.NavigationService.getCategoryList().subscribe(
+      (list: Category[]) => {
+        let present =false;
+        for (let item of list){
+
+          
+          for(let navItem of this.navigationList){
+
+            if(navItem.category === item.Category){
+              navItem.subcategories.push(item.subCategory);
+              present =true;
+            }
+          
+
+          }
+          if(!present){
+            this.navigationList.push({
+                category: item.Category,
+                subcategories:[item.subCategory],
+            });
+          }
+        }
+      }
+    );
   }
-  
-];
 
-
-  constructor(){}
-
-  ngOnInit(): void { }
-
-  openModal(name: string){
+  openModal(name: string) {
     this.container.clear();
 
     let componentType!: Type<any>;
@@ -46,6 +69,4 @@ navigationList : NavigationItem[]=[
 
     this.container.createComponent(componentType);
   }
-
-  
 }

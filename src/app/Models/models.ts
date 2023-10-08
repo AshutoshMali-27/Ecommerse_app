@@ -1,7 +1,7 @@
 
 export interface SuggestedProduct {
     banerimage: string;
-    category: Category;
+    Category: Category;
   }
   
   export interface NavigationItem {
@@ -31,7 +31,7 @@ export interface SuggestedProduct {
   
   export interface Category {
     id: number;
-    category: string;
+    Category: string;
     subCategory: string;
   }
   

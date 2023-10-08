@@ -12,7 +12,7 @@ export class SuggestProductComponent  implements OnInit  {
 
   @Input() category: Category = {
     id: 0,
-    category: '',
+    Category: '',
     subCategory: '',
   };
   @Input() count: number = 3;

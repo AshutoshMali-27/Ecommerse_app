@@ -10,25 +10,25 @@ export class HomeComponent implements OnInit {
   suggestedProducts: SuggestedProduct[] = [
     {
       banerimage: 'Baner/Baner_Mobile.png',
-      category: {
+      Category: {
         id: 0,
-        category: 'electronics',
+        Category: 'electronics',
         subCategory: 'mobiles',
       },
     },
     {
       banerimage: 'Baner/Baner_Laptop.png',
-      category: {
+      Category: {
         id: 1,
-        category: 'electronics',
+        Category: 'electronics',
         subCategory: 'laptops',
       },
     },
     {
       banerimage: 'Baner/Baner_Chair.png',
-      category: {
+      Category: {
         id: 1,
-        category: 'furniture',
+        Category: 'furniture',
         subCategory: 'chairs',
       },
     },
