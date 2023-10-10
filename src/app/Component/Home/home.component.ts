@@ -12,24 +12,24 @@ export class HomeComponent implements OnInit {
       banerimage: 'Baner/Baner_Mobile.png',
       Category: {
         id: 0,
-        Category: 'electronics',
-        subCategory: 'mobiles',
+        category: 'electronics',
+        subcategory: 'mobiles',
       },
     },
     {
       banerimage: 'Baner/Baner_Laptop.png',
       Category: {
         id: 1,
-        Category: 'electronics',
-        subCategory: 'laptops',
+        category: 'electronics',
+        subcategory: 'laptops',
       },
     },
     {
       banerimage: 'Baner/Baner_Chair.png',
       Category: {
         id: 1,
-        Category: 'furniture',
-        subCategory: 'chairs',
+        category: 'furniture',
+        subcategory: 'chairs',
       },
     },
   ];

@@ -7,15 +7,15 @@ import { Router } from '@angular/router';
 export class DirectiveDirective {
   @Input() category: Category = {
     id: 0,
-    Category: '',
-    subCategory: '',
+    category: '',
+    subcategory: '',
   };
 
   @HostListener('click') openProducts() {
     this.router.navigate(['/products'], {
       queryParams: {
-        category: this.category.Category,
-        subcategory: this.category.subCategory,
+        category: this.category.category,
+        subcategory: this.category.subcategory,
       },
     });
   }

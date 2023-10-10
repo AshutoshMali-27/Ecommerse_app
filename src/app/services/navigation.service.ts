@@ -18,24 +18,36 @@ export class NavigationService {
   
   constructor(private http : HttpClient) { }
 
-  getCategoryList(){
-    return this.http.get(this.baseUrl + 'GetCategoryList');
+  // getCategoryList(){
+  //   return this.http.get(this.baseUrl + 'GetCategoryList');
+  // }
+
+  getCategoryList() {
+    let url = this.baseUrl + 'GetCategoryList';
+    return this.http.get<any[]>(url).pipe(
+      map((categories) =>
+        categories.map((category) => {
+          let mappedCategory: Category = {
+            id: category.id,
+            category: category.category,
+            subcategory: category.subCategory,
+          };
+          console.log(category)
+          return mappedCategory;
+         
+        })
+      )  
+    );
   }
 
-  // getCategoryList() {
-  //   let url = this.baseUrl + 'GetCategoryList';
-  //   return this.http.get<any[]>(url).pipe(
-  //     map((categories) =>
-  //       categories.map((category) => {
-  //         let mappedCategory: Category = {
-  //           id: category.id,
-  //           Category: category.Category,
-  //           subCategory: category.SubCategory,
-  //         };
-  //         return mappedCategory;
-  //       })
-  //     )
-  //   );
-  // }
+  GetProducts(category:string ,subcategory:string ,count:number){
+
+    return this.http.get<any[]>(this.baseUrl+'GetProducts',{
+      params:new HttpParams()
+      .set('category',category)
+      .set('subcategory',subcategory)
+      .set('count',count),
+    }); 
+  }
 }
 

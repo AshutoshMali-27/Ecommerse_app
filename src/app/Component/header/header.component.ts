@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('modalTitle') modelTitle!: ElementRef;
   @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;
-  list:any;
+  //list:any;
 
 
   navigationList: NavigationItem[] = [];
@@ -29,10 +29,27 @@ export class HeaderComponent implements OnInit {
   constructor(private NavigationService: NavigationService) {}
 
   ngOnInit(): void {
-    this.NavigationService.getCategoryList().subscribe((res) => {
-      console.log(res);
-      this.list = res;
-    })
+    this.NavigationService.getCategoryList().subscribe((list: Category[] ) =>
+    {
+      console.log(list)
+      for(let item of list){
+      
+        let present =false;
+        for(let navItem of this.navigationList){
+          if(navItem.category === item.category){
+            navItem.subcategories.push(item.subcategory);
+            present=true;
+          }
+        }
+        if(!present){
+          this.navigationList.push({
+            category:item.category,
+            subcategories:[item.subcategory],
+          }); 
+        } 
+      }
+    }
+    ) 
   }
 
   openModal(name: string) {

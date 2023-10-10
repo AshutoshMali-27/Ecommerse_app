@@ -31,8 +31,8 @@ export interface SuggestedProduct {
   
   export interface Category {
     id: number;
-    Category: string;
-    subCategory: string;
+    category: string;
+    subcategory: string;
   }
   
   export interface Product {

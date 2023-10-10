@@ -1,6 +1,7 @@
+import { NavigationService } from './../../services/navigation.service';
 
 import { Component, Input, OnInit } from '@angular/core';
-import { Category  } from '../../Models/models';
+import { Category,Product  } from '../../Models/models';
 
 
 @Component({
@@ -12,15 +13,26 @@ export class SuggestProductComponent  implements OnInit  {
 
   @Input() category: Category = {
     id: 0,
-    Category: '',
-    subCategory: '',
+    category: '',
+    subcategory: '',
   };
   @Input() count: number = 3;
-  constructor(){}
+  products: Product[] = [] ;
+  constructor(private NavigationService :NavigationService){}
 
   
 ngOnInit(): void {
-    
+    this.NavigationService.GetProducts(
+      this.category.category,
+      this.category.subcategory,
+      this.count
+    )
+
+    .subscribe((res:any []) =>{
+      for(let product of res){
+        this.products.push(product)
+      }
+    })
 }
 
 }

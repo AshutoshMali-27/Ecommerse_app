@@ -7,21 +7,22 @@
             header
         </div>
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../../assets/Images/mobiles/10/1.jpg" alt="" class="card-img-top" style="width:22rem;" appOpenProductDetails [productId]="1">
+            <img src="../../../assets/Images/mobiles/{{product.productCategory.subcategory}}/{{product.id}}/1.jpg" alt="" class="card-img-top" style="width:22rem;" appOpenProductDetails [productId]="product.id">
         </div>
     
     
         <div class="card-body">
-        <h5 class="card-title title">Title</h5>
-        <h6 class="card-subtitle my-2 text-primary">12-product are avaliable </h6>
-        <p class="card-text description"> Description</p>
+        <h5 class="card-title title">{{product.title}}</h5>
+        <h6 class="card-subtitle my-2 text-primary">{{product.quantity}} are avaliable </h6>
+        <p class="card-text description">{{product.description}}</p>
     </div>
     
     <div class="card-body">
         <h5 class="card-title text-success"> Final Price
-        <span class="text-primary">-20%</span></h5>
+            {{UtilityservicesService.applyDiscount(product.price,product.offer.discount)}}
+        <span class="text-primary">-{{product.offer.discount}}%</span></h5>
         <h6 class="card-subtitle text-danger text-decoration-line-through">
-            Original Price
+            {{product.price}}
         </h6>
     </div>
     
