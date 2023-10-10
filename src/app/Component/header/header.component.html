@@ -10,8 +10,11 @@
                     Categories
                 </button>
                 <ul class="dropdown-menu fs-5">
-                    <ng-container *ngFor="let item of navigationList; let i = index;">
-                        <li class="text-center fw-bold">{{item.category | titlecase}}</li>
+                    <ng-container *ngFor="let item of list; let i = index;">
+                                <li class="text-center">{{item.category}}</li>
+                                <li class="text-center">{{item.subCategory}}</li>
+                        
+                        <!-- <li class="text-center fw-bold">{{item.category | titlecase}}</li>
                         <li *ngFor="let subcategory of item.subcategories" [style.cursor]="'pointer'">
                             <a class="dropdown-item" OpenProducts [category]="{id:0 , 'Category': item.category ,'subCategory': subcategory}">
                                 {{subcategory | titlecase}}
@@ -19,7 +22,7 @@
                         </li>
                         <li *ngIf="i !== navigationList.length - 1">
                             <hr class="dropdown-divider">
-                        </li>
+                        </li> -->
 
                     </ng-container>
                 </ul>
