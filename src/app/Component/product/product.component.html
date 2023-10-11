@@ -2,12 +2,13 @@
 
 
 <div class="grid-view" *ngIf="view === 'grid'">
+    
     <div class="card text-center">
         <div class="card-header fw-bold fs-5 text-success">
             header
         </div>
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../../assets/Images/mobiles/{{product.productCategory.subcategory}}/{{product.id}}/1.jpg" alt="" class="card-img-top" style="width:22rem;" appOpenProductDetails [productId]="product.id">
+            <img src="../../../assets/Images/{{product.productCategory.subcategory}}/{{product.id}}/1.jpg" alt="" class="card-img-top" style="width:22rem;" appOpenProductDetails [productId]="product.id">
         </div>
     
     

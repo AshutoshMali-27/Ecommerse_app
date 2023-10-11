@@ -1,5 +1,5 @@
 import { UtilityservicesService } from './../../services/utilityservices.service';
-import { Product } from './../../Models/models';
+import { Product,Category } from './../../Models/models';
 import { Component ,Input,OnInit } from '@angular/core';
 
 @Component({
@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
     },
     imageName: '',
   }; 
-  constructor(public UtilityservicesService:UtilityservicesService){}
+  constructor(public UtilityservicesService : UtilityservicesService ){}
 
   ngOnInit(): void {
       

@@ -30,7 +30,7 @@ export class NavigationService {
           let mappedCategory: Category = {
             id: category.id,
             category: category.category,
-            subcategory: category.subCategory,
+            subcategory: category.subcategory,
           };
           console.log(category)
           return mappedCategory;
@@ -47,7 +47,14 @@ export class NavigationService {
       .set('category',category)
       .set('subcategory',subcategory)
       .set('count',count),
-    }); 
+
+      
+    }
+    
+    
+    ); 
+    console.log(category)
+    
   }
 }
 

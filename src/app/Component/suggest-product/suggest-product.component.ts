@@ -29,8 +29,12 @@ ngOnInit(): void {
     )
 
     .subscribe((res:any []) =>{
+      console.log(res)
       for(let product of res){
         this.products.push(product)
+
+         console.log(product)
+         console.log(this.category.subcategory)
       }
     })
 }
