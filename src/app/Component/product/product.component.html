@@ -38,28 +38,28 @@
     <div class="row g-0">
 <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
 
-    <img src="../../../assets/Images/mobiles/10/1.jpg" alt="Product  Image" class="img-fluid rounded-start" 
-    style="width:22rem;" appOpenProductDetails [productId]="1">
+    <img src="../../../assets/Images/{{product.productCategory.subcategory}}/{{product.id}}/1.jpg" alt="Product  Image" class="img-fluid rounded-start" 
+    style="width:22rem;" appOpenProductDetails [productId]="product.id">
 </div>
         <div class="col d-flex flex-column">
             <div class="card-header text-center">
                 header
             </div>
             <div class="card-body">
-                <h5 class="card-title title"> Title</h5>
-                <p class="card-text description"> Descripition</p>
-                <h6 class="card-subtitle mb-3 text-primary">11 Product are avaliabe</h6>
+                <h5 class="card-title title"> {{product.title}}</h5>
+                <p class="card-text description"> {{product.description}}</p>
+                <h6 class="card-subtitle mb-3 text-primary">{{product.quantity}} are avaliabe</h6>
             </div>
 
             <div class="card-body">
                 <h4 class="card-title text-muted"></h4>
                 <h2 class="card-title text-success">
-                    final Price
+                    {{UtilityservicesService.applyDiscount(product.price,product.offer.discount)}}
                     <span class="text-primary">
-                        -20%
+                        -{{product.offer.discount}}%
                     </span>
                 </h2>
-                <h5 class="card-subtitle text-danger text-decoration-line-through"> Original Price</h5>
+                <h5 class="card-subtitle text-danger text-decoration-line-through">   {{product.price}}</h5>
             </div>
             <div class="card-footer text-muted d-grid gap-2">
                 <button class="btn btn-outline-success" type="button"> Add to Cart</button>

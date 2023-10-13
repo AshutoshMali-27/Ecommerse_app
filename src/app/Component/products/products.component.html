@@ -11,13 +11,13 @@
         <span class="me-5 d-flex alignitems-center fs-5 fw-bold">Sort By</span>
         <div class="btn-group" role="group">
         
-            <button type="button" class="btn btn-outline-secondary" [ngClass]="{'active' : sortby === 'default'}" (click)="sortby ='default'">
+            <button type="button" class="btn btn-outline-secondary" [ngClass]="{'active' : sortby === 'default'}" (click)="sortby ='default'; sortByPrice(sortby)">
                 Default
             </button>
-            <button type="button" class="btn btn-outline-secondary" [ngClass]="{'active' : sortby === 'htl'}" (click)="sortby ='htl'">
+            <button type="button" class="btn btn-outline-secondary" [ngClass]="{'active' : sortby === 'htl'}" (click)="sortby ='htl'; sortByPrice(sortby)">
                 Price (high to Low)
             </button>
-            <button type="button" class="btn btn-outline-secondary" [ngClass]="{'active' : sortby === 'lth'}" (click)="sortby ='lth'">
+            <button type="button" class="btn btn-outline-secondary" [ngClass]="{'active' : sortby === 'lth'}" (click)="sortby ='lth'; sortByPrice(sortby)">
                 Price(low to high)
             </button>
         </div>
@@ -30,16 +30,16 @@
 
     <div class="grid-view" *ngIf="view ==='grid'">
         <div class="row g-5">
-            <div class="col-3" *ngFor="let product of [1,1,1,1,1]">
-                <app-product></app-product>
+            <div class="col-3" *ngFor="let product of products">
+                <app-product [product]="product"></app-product>
             </div>
         </div>
     </div>
 
     <div class="list-view" *ngIf="view ==='list'">
-        <div class="row mb-5" *ngFor="let product of [1,1,1,1,1]">
+        <div class="row mb-5" *ngFor="let product of products">
             <div class="col">
-                <app-product [view]="'list'"></app-product>
+                <app-product [view]="'list'" [product]="product"></app-product>
             </div>
         </div>
     </div>
