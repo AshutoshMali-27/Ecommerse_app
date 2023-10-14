@@ -1,3 +1,5 @@
+import { UtilityservicesService } from './../../services/utilityservices.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,
   FormGroup,
@@ -13,7 +15,11 @@ import { FormBuilder,
 })
 export class LoginComponent implements OnInit {
   loginFrom!: FormGroup;
-  constructor(private fb:FormBuilder) {}
+  message="";
+  constructor(private fb:FormBuilder, 
+    private NavigationService:NavigationService,
+    private UtilityservicesService:UtilityservicesService
+    ) {}
 
   ngOnInit(): void {
 this.loginFrom =this.fb.group({
@@ -27,7 +33,18 @@ this.loginFrom =this.fb.group({
   ],
 });
   }
-login(){}
+login(){
+  this.NavigationService.loginuser(this.Email.value,this.Password.value).subscribe((res:any)=>{
+
+    if(res.toString() !== 'invalid'){
+      this.message ='Logged in Successfully';
+     this.UtilityservicesService.setUser(res.toString());
+    }
+    else{
+      this.message='Invalid Credentials!';
+    }
+  });
+}
 
 get Email(): FormControl{
   return this.loginFrom.get('email') as FormControl

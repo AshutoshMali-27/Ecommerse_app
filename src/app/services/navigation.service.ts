@@ -56,5 +56,23 @@ export class NavigationService {
     console.log(category)
     
   }
+
+  GetProduct(id:number){
+    let url =this.baseUrl + "GetProduct/" +id;
+    return this.http.get(url);
+  }
+
+
+  registerUser(user:User){
+    let url =this.baseUrl + "RegisterUser";
+    return this.http.post(url,user,{responseType:'text'});
+  }
+
+
+  loginuser(email:string ,password:string){
+    
+    let url =this.baseUrl + 'LoginUser';
+    return this.http.post(url,{Email:email,Password:password},{responseType:'text'});
+  }
 }
 

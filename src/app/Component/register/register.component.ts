@@ -1,3 +1,4 @@
+import { NavigationService } from 'src/app/services/navigation.service';
 import { Component ,OnInit} from '@angular/core';
 import { FormBuilder,
    FormGroup,
@@ -7,6 +8,8 @@ import { FormBuilder,
     
    } from '@angular/forms';
 
+   import { User } from 'src/app/Models/models';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,7 +18,8 @@ import { FormBuilder,
 export class RegisterComponent implements OnInit {
 registerForm!: FormGroup;
 InvalidRPWD: boolean =false;
-constructor(private fb: FormBuilder){}
+message ='';
+constructor(private fb: FormBuilder,private NavigationService:NavigationService){}
 
 ngOnInit(): void {
     
@@ -37,6 +41,8 @@ ngOnInit(): void {
       ],
     ],
     email :['',[Validators.required,Validators.email]],
+    address:['',[Validators.required]],
+    mobile:['',[Validators.required]],
       pwd: [
         '',
         [
@@ -58,12 +64,12 @@ get LastName(): FormControl {
 get Email(): FormControl {
   return this.registerForm.get('email') as FormControl;
 }
-// get Address(): FormControl {
-//   return this.registerForm.get('address') as FormControl;
-// }
-// get Mobile(): FormControl {
-//   return this.registerForm.get('mobile') as FormControl;
-// }
+get Address(): FormControl {
+  return this.registerForm.get('address') as FormControl;
+}
+get Mobile(): FormControl {
+  return this.registerForm.get('mobile') as FormControl;
+}
 get PWD(): FormControl {
   return this.registerForm.get('pwd') as FormControl;
 }
@@ -72,6 +78,27 @@ get RPWD(): FormControl {
 }
 
 
-register(){}
+register(){
+let user: User ={
+
+  id:0,
+  firstName: this.FirstName.value,
+  lastName:this.LastName.value ,
+  email:this.Email.value,
+  address:this.Address.value,
+  mobile:this.Mobile.value,
+  password:this.PWD.value,
+  createdAt:'',
+  modifiedAt:'',
+
+};
+
+this.NavigationService.registerUser(user).subscribe((res:any) =>{
+  console.log(res);
+  this.message =res.toString();
+  
+})
+
+} 
 
 }

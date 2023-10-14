@@ -21,6 +21,7 @@ import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,18 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    JwtModule.forRoot({
+      config:{
+       tokenGetter:()=>{
+      
+        return localStorage.getItem('user');
+        console.log();
+       },
+       allowedDomains:['localhost:44366']
+
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
